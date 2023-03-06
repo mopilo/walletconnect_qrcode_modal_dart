@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:walletconnect_qrcode_modal_dart/src/components/modal_segment_thumb_widget.dart';
 import 'package:walletconnect_qrcode_modal_dart/src/components/modal_selector_widget.dart';
 
@@ -221,10 +222,11 @@ class _ModalContent extends StatelessWidget {
             url: uri,
             wallets: _mobileWallets,
             walletCallback: walletCallback,
-            onWalletTap: (wallet, url) => Utils.iosLaunch(
-              wallet: wallet,
-              uri: url,
-            ),
+            onWalletTap: (wallet, url) => launchUrl(Uri.parse(uri))
+            // Utils.iosLaunch(
+            //   wallet: wallet,
+            //   uri: url,
+            // ),
           );
         case ModalWalletType.listDesktop:
           return ModalWalletListWidget(

@@ -76,8 +76,10 @@ class WalletConnectQrCodeModal {
 
     if (Utils.isIOS) {
       if (_wallet == null) return;
+            await launchUrl(Uri.parse(_uri!));
 
-      await Utils.iosLaunch(wallet: _wallet!, uri: _uri!);
+
+      // await Utils.iosLaunch(wallet: _wallet!, uri: _uri!);
     } else {
       await launchUrl(Uri.parse(_uri!));
     }
